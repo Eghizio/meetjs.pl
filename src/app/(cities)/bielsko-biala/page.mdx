@@ -1,5 +1,60 @@
+import { env } from '../../../env';
+import { CityEmail } from '../../../components/CityEmail';
+import { Organizers } from '../../../components/Orginizers';
+import { FAQ } from '../../../components/FAQ';
+import { LocalGroups } from '../../../components/LocalGroups';
+import { CityBanner } from '../../../components/CityBanner';
+import { BielskoBialaFAQ } from './_FAQ';
+import { BielskoBialaOrganizers } from './_Organizers';
+
 export const metadata = {
-	title: "meet.js Bielsko-Biała",
+	metadataBase: new URL(`${env.SITE_URL}/bielsko-biala`),
+	title: 'meet.js Bielsko-Biała',
+	description: 'JavaScript meetups in Bielsko-Biała',
+	keywords: 'meet.js, Bielsko-Biała, JavaScript, meetup',
+	openGraph: {
+		title: 'meet.js Bielsko-Biała',
+		description: 'JavaScript meetups in Bielsko-Biała',
+		type: 'website',
+		locale: 'en_US',
+		url: `${env.SITE_URL}/bielsko-biala`,
+		siteName: 'meet.js',
+		images: [
+			{
+				url: `${env.SITE_URL}/api/og?city=Bielsko-Biała`,
+				width: 1200,
+				height: 630,
+				alt: 'meet.js | JavaScript meetups in Bielsko-Biała',
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		site: '@meetjs',
+		title: 'meet.js',
+		description: 'JavaScript meetups in Bielsko-Biała',
+		images: [
+			{
+				url: `${env.SITE_URL}/api/og?city=Bielsko-Biała`,
+				width: 1200,
+				height: 630,
+				alt: 'meet.js | JavaScript meetups in Bielsko-Biała',
+			},
+		],
+	},
 };
 
-# Bielsko-Biała
+<CityBanner city="Bielsko-Biała" background="city/bielsko-biala.jpg" />
+
+<LocalGroups
+	localGroups={[
+		'https://www.meetup.com/meet-js-bielsko-biala/',
+		'https://www.facebook.com/groups/meetjsbb',
+	]}
+/>
+
+<FAQ questions={BielskoBialaFAQ} />
+
+<Organizers city="Bielsko-Biała" organizers={BielskoBialaOrganizers} />
+
+<CityEmail email="bielsko-biala@meetjs.pl" />

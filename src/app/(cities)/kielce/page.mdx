@@ -1,5 +1,59 @@
+import { env } from '../../../env';
+import { CityEmail } from '../../../components/CityEmail';
+import { Organizers } from '../../../components/Orginizers';
+import { FAQ } from '../../../components/FAQ';
+import { LocalGroups } from '../../../components/LocalGroups';
+import { CityBanner } from '../../../components/CityBanner';
+import { KielceFAQ } from './_FAQ';
+import { KielceOrganizers } from './_Organizers';
+
 export const metadata = {
-	title: "meet.js Kielce",
+  metadataBase: new URL(`${env.SITE_URL}/kielce`),
+  title: 'meet.js Kielce',
+  description: 'JavaScript meetups in Kielce',
+  keywords: 'meet.js, Kielce, JavaScript, meetup',
+  openGraph: {
+    title: 'meet.js Kielce',
+    description: 'JavaScript meetups in Kielce',
+    type: 'website',
+    locale: 'en_US',
+    url: `${env.SITE_URL}/kielce`,
+    siteName: 'meet.js',
+    images: [
+      {
+        url: `${env.SITE_URL}/api/og?city=Kielce`,
+        width: 1200,
+        height: 630,
+        alt: 'meet.js | JavaScript meetups in Kielce',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@meetjs',
+    title: 'meet.js',
+    description: 'JavaScript meetups in Kielce',
+    images: [
+      {
+        url: `${env.SITE_URL}/api/og?city=Kielce`,
+        width: 1200,
+        height: 630,
+        alt: 'meet.js | JavaScript meetups in Kielce',
+      },
+    ],
+  },
 };
 
-# Kielce
+<CityBanner city="Kielce" background="city/kielce.jpg" />
+
+<LocalGroups
+  localGroups={[
+    'https://www.meetup.com/meet-js-kielce/',
+  ]}
+/>
+
+<FAQ questions={KielceFAQ} />
+
+<Organizers city="Kielce" organizers={KielceOrganizers} />
+
+<CityEmail email="kielce@meetjs.pl" />
